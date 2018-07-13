@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="644.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.WordManagementController">
+    <children>
+        <VBox layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="14.0"
+              AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <children>
+                <Pane layoutX="10.0" layoutY="51.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="616.0"
+                      prefWidth="964.0">
+                    <children>
+                        <GridPane layoutX="332.0" layoutY="14.0" prefHeight="30.0" prefWidth="300.0">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="393.0" minWidth="10.0"
+                                                   prefWidth="112.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="459.0"
+                                                   minWidth="10.0" prefWidth="165.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <ChoiceBox fx:id="chooseOperationBox" prefWidth="150.0" GridPane.columnIndex="1">
+                                    <GridPane.margin>
+                                        <Insets right="5.0"/>
+                                    </GridPane.margin>
+                                </ChoiceBox>
+                                <Label text="Wyświetl tłumaczenia:"/>
+                            </children>
+                        </GridPane>
+                        <TableView fx:id="translationTable" editable="true" layoutY="53.0" prefHeight="471.0">
+                            <columns>
+                                <TableColumn fx:id="ID_translationColumn" prefWidth="34.00001525878906" text="ID"/>
+                                <TableColumn fx:id="word1TranslationColumn" prefWidth="404.99998474121094"
+                                             text="Polskie słowo"/>
+                                <TableColumn fx:id="word2TranslationColumn" minWidth="0.0" prefWidth="398.0"
+                                             text="Angielskie słowo"/>
+                                <TableColumn fx:id="ratingTranslationColumn" minWidth="0.0" prefWidth="40.0"
+                                             text="Ocena"/>
+                                <TableColumn fx:id="isConfirmedTranslationColumn" maxWidth="236.0" prefWidth="85.0"
+                                             text="Potwierdzone"/>
+                            </columns>
+                        </TableView>
+                        <GridPane layoutX="52.0" layoutY="524.0" prefHeight="30.0" prefWidth="860.0">
+                            <columnConstraints>
+                                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="592.0" minWidth="10.0"
+                                                   prefWidth="352.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="619.0"
+                                                   minWidth="10.0" prefWidth="382.0"/>
+                                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="316.0"
+                                                   minWidth="10.0" prefWidth="137.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                            </rowConstraints>
+                            <children>
+                                <TextField fx:id="polishTextField" maxWidth="-Infinity" minWidth="-Infinity"
+                                           onKeyReleased="#onKeyReleasedAddTranslation" prefWidth="300.0"
+                                           promptText="Polskie słowo"/>
+                                <TextField fx:id="englishTextField" maxWidth="-Infinity" minWidth="-Infinity"
+                                           onKeyReleased="#onKeyReleasedAddTranslation" prefWidth="300.0"
+                                           promptText="Angielskie słowo" GridPane.columnIndex="1">
+                                    <opaqueInsets>
+                                        <Insets left="5.0" right="5.0"/>
+                                    </opaqueInsets>
+                                </TextField>
+                                <Button mnemonicParsing="false" onAction="#addTranslation" text="Dodaj tłumaczenie"
+                                        GridPane.columnIndex="2"/>
+                            </children>
+                        </GridPane>
+                        <Label layoutX="876.0" layoutY="6.0" prefHeight="47.0" prefWidth="88.0"
+                               text="Podwójne kliknięcie zmienia potwierdzenie" textAlignment="CENTER" wrapText="true">
+                            <font>
+                                <Font size="10.0"/>
+                            </font>
+                        </Label>
+                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#downloadTranslations"
+                                text="Odśwież"/>
+                    </children>
+                </Pane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
