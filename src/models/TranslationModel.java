@@ -1,6 +1,7 @@
 package models;
 
 import javafx.beans.property.*;
+import packages.TranslationPackage;
 
 import java.io.Serializable;
 
@@ -33,39 +34,17 @@ public class TranslationModel implements Serializable
 	private final DoubleProperty avg_rating;
 
 	/**
-	 * Konstruktor
+	 * konstruktor konwertujący obiekt TranslationPackage na TranslationModel
 	 *
-	 * @param ID_translation identyfikator tłumaczenia
-	 * @param word1          pierwsze słowo (polskie)
-	 * @param word2          drugie słowo (angielskie)
-	 * @param confirmed      określa, czy tłumaczenie jest potwierdzone
-	 * @param avg_rating     średnia ocena tłumaczenia
+	 * @param translationPackage informacje o tłumaczeniu w obiekcie TranslationPackage (odebrane z serwera)
 	 */
-	public TranslationModel ( Integer ID_translation, String word1, String word2, Boolean confirmed, Double avg_rating )
+	public TranslationModel (TranslationPackage translationPackage)
 	{
-		this.ID_translation = new SimpleIntegerProperty ( ID_translation );
-		this.word1 = new SimpleStringProperty ( word1 );
-		this.word2 = new SimpleStringProperty ( word2 );
-		this.confirmed = new SimpleBooleanProperty ( confirmed );
-		this.avg_rating = new SimpleDoubleProperty ( avg_rating );
-	}
-
-	/**
-	 * Konstruktor
-	 *
-	 * @param ID_translation identyfikator tłumaczenia
-	 * @param word           słowo
-	 * @param confirmed      określa, czy tłumaczenie jest potwierdzone
-	 * @param avg_rating     średnia ocena tłumaczenia
-	 */
-	public TranslationModel ( Integer ID_translation, String word, Boolean confirmed, Double avg_rating )
-	{
-		this.ID_translation = new SimpleIntegerProperty ( ID_translation );
-		this.word1 = new SimpleStringProperty ( word );
-		this.confirmed = new SimpleBooleanProperty ( confirmed );
-		this.avg_rating = new SimpleDoubleProperty ( avg_rating );
-
-		this.word2 = new SimpleStringProperty ( "" );
+		this.ID_translation = new SimpleIntegerProperty ( translationPackage.getID_translation () );
+		this.word1 = new SimpleStringProperty ( translationPackage.getWord1 () );
+		this.word2 = new SimpleStringProperty ( translationPackage.getWord2 () );
+		this.confirmed = new SimpleBooleanProperty ( translationPackage.isConfirmed () );
+		this.avg_rating = new SimpleDoubleProperty ( translationPackage.getAvg_rating () );
 	}
 
 	/**

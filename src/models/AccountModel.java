@@ -4,6 +4,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import packages.AccountPackage;
 
 import java.io.Serializable;
 
@@ -32,19 +33,16 @@ public class AccountModel implements Serializable
 	private final StringProperty accountType;
 
 	/**
-	 * Konstruktor
+	 * konstruktor konwertujący obiekt AccountPackage na AccountModel
 	 *
-	 * @param ID_account  identyfikator konta
-	 * @param login       login do konta
-	 * @param password    hasło do konta
-	 * @param accountType typ konta
+	 * @param accountPackage informacje o koncie w obiekcie AccountPackage (odebrane z serwera)
 	 */
-	public AccountModel ( Integer ID_account, String login, String password, String accountType )
+	public AccountModel (AccountPackage accountPackage)
 	{
-		this.ID_account = new SimpleIntegerProperty ( ID_account );
-		this.login = new SimpleStringProperty ( login );
-		this.password = new SimpleStringProperty ( password );
-		this.accountType = new SimpleStringProperty ( accountType );
+		this.ID_account = new SimpleIntegerProperty (accountPackage.getID_account ());
+		this.login = new SimpleStringProperty (accountPackage.getLogin ());
+		this.password = new SimpleStringProperty (accountPackage.getPassword ());
+		this.accountType = new SimpleStringProperty (accountPackage.getAccountType ());
 	}
 
 	/**
